@@ -1,0 +1,154 @@
+e99a18c428cb38d5f260853678922e03:Spring2025$
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit =>
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1000 (NTLM)
+Hash.Target......: ../user-hashes-no-machines/user-hashes-no-machines.ntds
+Time.Started.....: Tue Sep 02 10:39:43 2025 (10 secs)
+Time.Estimated...: Wed Sep 03 20:22:10 2025 (2 hours, 11 mins)
+Kernel.Feature...: Optimized Kernel
+Guess.Base.......: File (../goodwordlist.txt)
+Guess.Mod........: Rules (../OneRuleToRuleThemAll.rule)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   428.1 MH/s (427.12ms) @ Accel:1024 Loops:256 Thr:256 Vec:1
+Recovered........: 3/1447 (0.21%) Digests (total), 2/1447 (0.14%) Digests (new)
+Remaining........: 1444 (99.79%) Digests
+Recovered/Time...: CUR:2,N/A,N/A AVG:0.06,3.42,82.08 (Min,Hour,Day)
+Progress.........: 121274826630078/134136321020540 (90.41%)
+Rejected.........: 1859575489470/121274826630078 (1.53%)
+Restore.Point....: 2332137155/2579792692 (90.40%)
+Restore.Sub.#1...: Salt:0 Amplifier:18944-19200 Iteration:0-256
+Candidate.Engine.: Device Generator
+Candidates.#1....: Ciger2236632217 -> aibacrew1
+Hardware.Mon.#1..: Temp: 52c Util:100% Core: 875MHz Mem:2505MHz Bus:16
+
+1234567890abcdef1234567890abcdef:sommer123!
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit =>
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1000 (NTLM)
+Hash.Target......: ../user-hashes-no-machines.ntds
+Time.Started.....: Tue Sep 02 10:39:43 2025 (2 mins, 10 secs)
+Time.Estimated...: Tue Sep 02 10:58:12 2025 (16 mins, 19 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (../goodwordlist.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  2095.4 kH/s (2.75ms) @ Accel:256 Loops:1 Thr:64 Vec:1
+Speed.#*.........:  2095.4 kH/s
+Recovered........: 1/1447 (0.07%) Digests (total), 1/1447 (0.07%) Digests (new)
+Remaining........: 1446 (99.93%) Digests
+Recovered/Time...: CUR:1,N/A,N/A AVG:0.50,N/A,N/A (Min,Hour,Day)
+Progress.........: 114081792/2579792692 (4.42%)
+Rejected.........: 0/114081792 (0.00%)
+Restore.Point....: 113786880/2579792692 (4.41%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: 1212142123456789 -> 12122007gar
+Hardware.Mon.#1..: Temp: 36c Util: 32% Core: 679MHz Mem: 800MHz Bus:16
+
+5f4dcc3b5aa765d61d8327deb882cf99:Password1!
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit =>
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1000 (NTLM)
+Hash.Target......: ../user-hashes-no-machines/user-hashes-no-machines.ntds
+Time.Started.....: Tue Sep 02 10:39:43 2025 (1 day, 5 hours)
+Time.Estimated...: Wed Sep 03 20:22:10 2025 (2 hours, 11 mins)
+Kernel.Feature...: Optimized Kernel
+Guess.Base.......: File (../goodwordlist.txt)
+Guess.Mod........: Rules (../OneRuleToRuleThemAll.rule)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   428.1 MH/s (427.12ms) @ Accel:1024 Loops:256 Thr:256 Vec:1
+Recovered........: 3/1447 (0.21%) Digests (total), 2/1447 (0.14%) Digests (new)
+Remaining........: 1444 (99.79%) Digests
+Recovered/Time...: CUR:2,N/A,N/A AVG:0.06,3.42,82.08 (Min,Hour,Day)
+Progress.........: 121274826630078/134136321020540 (90.41%)
+Rejected.........: 1859575489470/121274826630078 (1.53%)
+Restore.Point....: 2332137155/2579792692 (90.40%)
+Restore.Sub.#1...: Salt:0 Amplifier:18944-19200 Iteration:0-256
+Candidate.Engine.: Device Generator
+Candidates.#1....: Ciger2236632217 -> aibacrew1
+Hardware.Mon.#1..: Temp: 52c Util:100% Core: 875MHz Mem:2505MHz Bus:16
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit =>
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1000 (NTLM)
+Hash.Target......: ../user-hashes-no-machines/user-hashes-no-machines.ntds
+Time.Started.....: Tue Sep 02 10:39:43 2025 (1 day, 6 hours)
+Time.Estimated...: Wed Sep 03 20:22:10 2025 (2 hours, 11 mins)
+Kernel.Feature...: Optimized Kernel
+Guess.Base.......: File (../goodwordlist.txt)
+Guess.Mod........: Rules (../OneRuleToRuleThemAll.rule)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   428.1 MH/s (427.12ms) @ Accel:1024 Loops:256 Thr:256 Vec:1
+Recovered........: 3/1447 (0.21%) Digests (total), 2/1447 (0.14%) Digests (new)
+Remaining........: 1444 (99.79%) Digests
+Recovered/Time...: CUR:2,N/A,N/A AVG:0.06,3.42,82.08 (Min,Hour,Day)
+Progress.........: 121274826630078/134136321020540 (90.41%)
+Rejected.........: 1859575489470/121274826630078 (1.53%)
+Restore.Point....: 2332137155/2579792692 (90.40%)
+Restore.Sub.#1...: Salt:0 Amplifier:18944-19200 Iteration:0-256
+Candidate.Engine.: Device Generator
+Candidates.#1....: Ciger2236632217 -> aibacrew1
+Hardware.Mon.#1..: Temp: 52c Util:100% Core: 875MHz Mem:2505MHz Bus:16
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit =>
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1000 (NTLM)
+Hash.Target......: ../user-hashes-no-machines/user-hashes-no-machines.ntds
+Time.Started.....: Tue Sep 02 10:39:43 2025 (1 day, 7 hours)
+Time.Estimated...: Wed Sep 03 20:22:10 2025 (2 hours, 11 mins)
+Kernel.Feature...: Optimized Kernel
+Guess.Base.......: File (../goodwordlist.txt)
+Guess.Mod........: Rules (../OneRuleToRuleThemAll.rule)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   428.1 MH/s (427.12ms) @ Accel:1024 Loops:256 Thr:256 Vec:1
+Recovered........: 3/1447 (0.21%) Digests (total), 2/1447 (0.14%) Digests (new)
+Remaining........: 1444 (99.79%) Digests
+Recovered/Time...: CUR:2,N/A,N/A AVG:0.06,3.42,82.08 (Min,Hour,Day)
+Progress.........: 121274826630078/134136321020540 (90.41%)
+Rejected.........: 1859575489470/121274826630078 (1.53%)
+Restore.Point....: 2332137155/2579792692 (90.40%)
+Restore.Sub.#1...: Salt:0 Amplifier:18944-19200 Iteration:0-256
+Candidate.Engine.: Device Generator
+Candidates.#1....: Ciger2236632217 -> aibacrew1
+Hardware.Mon.#1..: Temp: 52c Util:100% Core: 875MHz Mem:2505MHz Bus:16
+
+25f9e794323b453885f5181f1b624d0b:LetMeIn2025
+d8578edf8458ce06fbc5bb76a58c5ca4:Welcome#123
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit =>
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 1000 (NTLM)
+Hash.Target......: ../user-hashes-no-machines/user-hashes-no-machines.ntds
+Time.Started.....: Tue Sep 02 10:39:43 2025 (2 days, 23 hours)
+Time.Estimated...: Fri Sep 05 18:31:52 2025 (8 hours, 20 mins)
+Kernel.Feature...: Optimized Kernel
+Guess.Base.......: File (../goodwordlist.txt)
+Guess.Mod........: Rules (../OneRuleToRuleThemAll.rule)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   428.3 MH/s (425.74ms) @ Accel:1024 Loops:256 Thr:256 Vec:1
+Recovered........: 5/1447 (0.35%) Digests (total), 2/1447 (0.14%) Digests (new)
+Remaining........: 1442 (99.65%) Digests
+Recovered/Time...: CUR:0,0,24 AVG:0.08,4.56,109.38 (Min,Hour,Day)
+Progress.........: 121279658468286/134136321020540 (90.42%)
+Rejected.........: 1859575489470/121279658468286 (1.53%)
+Restore.Point....: 2332137155/2579792692 (90.40%)
+Restore.Sub.#1...: Salt:0 Amplifier:25088-25344 Iteration:0-256
+Candidate.Engine.: Device Generator
+Candidates.#1....: tiger2a236632 -> tikacr2000w1
+Hardware.Mon.#1..: Temp: 51c Util:100% Core: 875MHz Mem:2505MHz Bus:16
+
+7c6a180b36896a0a8c02787eeafb0e4c:CoffeeTime42
