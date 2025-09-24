@@ -1,26 +1,6 @@
-class CrackedUser:
-    """A cracked user."""
+import re
 
-    def __init__(
-        self,
-        domain=None,
-        username=None,
-        cracked_password=None,
-        ntlm_hash=None,
-        date=None,
-        time_taken=None,
-    ) -> None:
-        """Init."""
-        self.domain = domain
-        self.username = username
-        self.cracked_password = cracked_password
-        self.ntlm_hash = ntlm_hash
-        self.date = date
-        self.time_taken = time_taken
-
-    def __repr__(self):
-        """Print a better representation of the class."""
-        return f"{self.domain}\\{self.username},{self.cracked_password},{self.ntlm_hash},{self.date},{self.time_taken}"
+from .models import CrackedUser
 
 
 def load_file(filename):
@@ -52,9 +32,35 @@ def parse_user_hashes(user_hashes, list_of_users):
 
 def parse_cracked_passwords(cracked_passwords, list_of_users):
     """Parse the cracked passwords."""
-    return 0
+    for password in cracked_passwords:
+        password_hash, cracked_password = password.split(":")
+
+        for user in list_of_users:
+            if user.ntlm_hash == password_hash:
+                user.cracked_password = cracked_password
 
 
 def parse_logfile(logfile, list_of_users):
     """Parse the logfile to get the date and time taken."""
-    return 0
+    password_regex = re.compile(r"^(\w+):(.*)$")
+    time_regex = re.compile(r"^Time\.Started.*: (.*) \((.*)\)$")
+
+    for line in logfile:
+        match_password = password_regex.match(line)
+        match_time = time_regex.match(line)
+
+        if match_time:
+            print(match_time.group(1), match_time.group(2))
+
+        if match_password:
+            print(match_password.group(1), match_password.group(2))
+
+
+def parse_hashcat(user_hashes, cracked_passwords, logfile):
+    list_of_users = []
+
+    parse_user_hashes(load_file(user_hashes), list_of_users)
+    parse_cracked_passwords(load_file(cracked_passwords), list_of_users)
+    parse_logfile(load_file(logfile), list_of_users)
+
+    return list_of_users

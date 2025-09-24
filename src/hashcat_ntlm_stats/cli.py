@@ -1,5 +1,6 @@
 import argparse
-from hashcat_ntlm_stats import parser
+
+from .parser import parse_hashcat
 
 
 def get_args():
@@ -18,15 +19,12 @@ def get_args():
 
 
 def main():
-    """Do the thing."""
-    list_of_users = []
+    """Parse hashcat files."""
     args = get_args()
 
-    parser.parse_user_hashes(parser.load_file(args.user_hashes), list_of_users)
-    parser.parse_cracked_passwords(
-        parser.load_file(args.cracked_passwords), list_of_users
+    list_of_users = parse_hashcat(
+        args.user_hashes, args.cracked_passwords, args.logfile
     )
-    parser.parse_logfile(parser.load_file(args.logfile), list_of_users)
 
     __import__("pprint").pprint(list_of_users)
 
