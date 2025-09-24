@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-
-import argparse
-
-
 class CrackedUser:
     """A cracked user."""
 
@@ -63,32 +58,3 @@ def parse_cracked_passwords(cracked_passwords, list_of_users):
 def parse_logfile(logfile, list_of_users):
     """Parse the logfile to get the date and time taken."""
     return 0
-
-
-def input_parser():
-    """Parse input."""
-    parser = argparse.ArgumentParser(
-        description="Correlate hashcat input, cracked results, and logs."
-    )
-    parser.add_argument("--user-hashes", required=True, help="Path to user_hashes file")
-    parser.add_argument(
-        "--cracked-passwords", required=True, help="Path to cracked passwords file"
-    )
-    parser.add_argument("--logfile", required=True, help="Path to hashcat log file")
-    return parser.parse_args()
-
-
-def main():
-    """Do the thing."""
-    list_of_users = []
-    args = input_parser()
-
-    parse_user_hashes(load_file(args.user_hashes), list_of_users)
-    parse_cracked_passwords(load_file(args.cracked_passwords), list_of_users)
-    parse_logfile(load_file(args.logfile), list_of_users)
-
-    __import__("pprint").pprint(list_of_users)
-
-
-if __name__ == "__main__":
-    main()

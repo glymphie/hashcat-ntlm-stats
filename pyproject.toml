@@ -27,3 +27,6 @@ dependencies = [
 
 [project.urls]
 Repository = "https://github.com/glymphie/hashcat-ntlm-stats.git"
+
+[project.scripts]
+hashcat-ntlm-stats = "hashcat_ntlm_stats.cli:main"
