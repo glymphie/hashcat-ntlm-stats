@@ -21,8 +21,12 @@ classifiers = [
   "Intended Audience :: Information Technology",
   "Programming Language :: Python :: 3.13",
 ]
-dependencies = [
+dependencies = []
+
+[dependency-groups]
+dev = [
     "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
 ]
 
 [project.urls]
@@ -30,3 +34,6 @@ Repository = "https://github.com/glymphie/hashcat-ntlm-stats.git"
 
 [project.scripts]
 hashcat-ntlm-stats = "hashcat_ntlm_stats.cli:main"
+
+[tool.pytest.ini_options]
+addopts = "--cov=src"
