@@ -1,10 +1,10 @@
 [build-system]
-requires = ["uv_build >= 0.8.17, <0.9.0"]
-build-backend = "uv_build"
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
 
 [project]
 name = "hashcat-ntlm-stats"
-version = "0.1.0"
+dynamic = ["version"]
 authors = [ {name = "Glymphie", email = "glymphie@protonmail.com"} ]
 description = "Parse and analyse hashcat output"
 readme = "README.md"
@@ -37,3 +37,9 @@ hashcat-ntlm-stats = "hashcat_ntlm_stats.cli:main"
 
 [tool.pytest.ini_options]
 addopts = "--cov=src"
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.uv-dynamic-versioning]
+fallback-version = "0.0.0"
