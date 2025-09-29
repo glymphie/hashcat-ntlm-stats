@@ -10,7 +10,7 @@ description = "Parse and analyse hashcat output"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = ">=3.13"
+requires-python = ">=3.9"
 keywords = ["hashcat", "parse", "analyse", "password", "cracked"]
 classifiers = [
   # How mature is this project?
