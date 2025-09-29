@@ -1,5 +1,7 @@
 # Overview
 
+[![Tests](https://github.com/glymphie/hashcat-ntlm-stats/actions/workflows/tests.yml/badge.svg)](https://github.com/glymphie/hashcat-ntlm-stats/actions/workflows/tests.yml)
+
 This project is
 
 You have 3 files:
