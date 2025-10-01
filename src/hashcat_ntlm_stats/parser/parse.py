@@ -1,4 +1,5 @@
 import re
+from datetime import datetime, timedelta
 
 from .models import CrackedUser
 
@@ -7,6 +8,28 @@ def load_file(filename):
     """Load a file and get a list."""
     with open(filename, "r", encoding="utf-8") as f:
         return f.read().splitlines()
+
+
+def get_current_time(date_time, time_taken=None):
+    """Get the current time plus deltatime."""
+    dt = datetime.strptime(date_time, "%a %b %d %H:%M:%S %Y")
+
+    if time_taken:
+        d = re.search(r"(\d+)\s*day", time_taken)
+        h = re.search(r"(\d+)\s*hour", time_taken)
+        m = re.search(r"(\d+)\s*min", time_taken)
+        s = re.search(r"(\d+)\s*sec", time_taken)
+
+        delta = timedelta(
+            days=int(d.group(1)) if d else 0,
+            hours=int(h.group(1)) if h else 0,
+            minutes=int(m.group(1)) if m else 0,
+            seconds=int(s.group(1)) if s else 0,
+        )
+
+        return dt + delta
+
+    return dt
 
 
 def parse_user_hashes(user_hashes, list_of_users):
@@ -46,17 +69,36 @@ def parse_logfile(logfile, list_of_users):
     time_regex = re.compile(r"^Time\.Started.*: (.*) \((.*)\)$")
 
     for line in logfile:
+        match_time = time_regex.match(line)
+
+        if match_time:
+            time_of_cracking_start = match_time.group(1)
+            current_time = get_current_time(match_time.group(1))
+            time_taken = "< 10 secs"
+            break
+
+    for line in logfile:
         match_password = password_regex.match(line)
         match_time = time_regex.match(line)
 
         if match_time:
-            print(match_time.group(1), match_time.group(2))
+            date = match_time.group(1)
+            time_taken = match_time.group(2)
+            current_time = get_current_time(date, time_taken)
 
         if match_password:
-            print(match_password.group(1), match_password.group(2))
+            password_hash = match_password.group(1)
+
+            for user in list_of_users:
+                if password_hash == user.ntlm_hash:
+                    user.date = current_time
+                    user.time_taken = time_taken
+
+    return time_of_cracking_start
 
 
 def parse_hashcat(user_hashes, cracked_passwords, logfile):
+    """Parse the hashcat files."""
     list_of_users = []
 
     parse_user_hashes(load_file(user_hashes), list_of_users)
