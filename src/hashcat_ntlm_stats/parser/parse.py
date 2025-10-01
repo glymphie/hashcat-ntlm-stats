@@ -10,26 +10,28 @@ def load_file(filename):
         return f.read().splitlines()
 
 
-def get_current_time(date_time, time_taken=None):
-    """Get the current time plus deltatime."""
-    dt = datetime.strptime(date_time, "%a %b %d %H:%M:%S %Y")
+def convert_to_datetime(date_time):
+    """Convert to datetime format."""
+    return datetime.strptime(date_time, "%a %b %d %H:%M:%S %Y")
 
-    if time_taken:
-        d = re.search(r"(\d+)\s*day", time_taken)
-        h = re.search(r"(\d+)\s*hour", time_taken)
-        m = re.search(r"(\d+)\s*min", time_taken)
-        s = re.search(r"(\d+)\s*sec", time_taken)
 
-        delta = timedelta(
-            days=int(d.group(1)) if d else 0,
-            hours=int(h.group(1)) if h else 0,
-            minutes=int(m.group(1)) if m else 0,
-            seconds=int(s.group(1)) if s else 0,
-        )
+def get_deltatime(date_time, time_taken):
+    """Get the finished time and deltatime."""
+    dt = convert_to_datetime(date_time)
 
-        return dt + delta
+    d = re.search(r"(\d+)\s*day", time_taken)
+    h = re.search(r"(\d+)\s*hour", time_taken)
+    m = re.search(r"(\d+)\s*min", time_taken)
+    s = re.search(r"(\d+)\s*sec", time_taken)
 
-    return dt
+    delta = timedelta(
+        days=int(d.group(1)) if d else 0,
+        hours=int(h.group(1)) if h else 0,
+        minutes=int(m.group(1)) if m else 0,
+        seconds=int(s.group(1)) if s else 0,
+    )
+
+    return dt + delta, delta
 
 
 def parse_user_hashes(user_hashes, list_of_users):
@@ -63,19 +65,27 @@ def parse_cracked_passwords(cracked_passwords, list_of_users):
                 user.cracked_password = cracked_password
 
 
+def get_set_time(time_regex, logfile, list_of_users):
+    for line in logfile:
+        match_time = time_regex.match(line)
+
+        if match_time:
+            start_date = match_time.group(1)
+
+            for user in list_of_users:
+                user.start_date = convert_to_datetime(start_date)
+
+            time_taken = "0 secs"
+            finished_at, time_taken = get_deltatime(start_date, time_taken)
+            return finished_at, time_taken
+
+
 def parse_logfile(logfile, list_of_users):
     """Parse the logfile to get the date and time taken."""
     password_regex = re.compile(r"^(\w+):(.*)$")
     time_regex = re.compile(r"^Time\.Started.*: (.*) \((.*)\)$")
 
-    for line in logfile:
-        match_time = time_regex.match(line)
-
-        if match_time:
-            time_of_cracking_start = match_time.group(1)
-            current_time = get_current_time(match_time.group(1))
-            time_taken = "< 10 secs"
-            break
+    finished_at, time_taken = get_set_time(time_regex, logfile, list_of_users)
 
     for line in logfile:
         match_password = password_regex.match(line)
@@ -84,17 +94,16 @@ def parse_logfile(logfile, list_of_users):
         if match_time:
             date = match_time.group(1)
             time_taken = match_time.group(2)
-            current_time = get_current_time(date, time_taken)
+            finished_at, time_taken = get_deltatime(date, time_taken)
 
         if match_password:
             password_hash = match_password.group(1)
 
             for user in list_of_users:
                 if password_hash == user.ntlm_hash:
-                    user.date = current_time
+                    user.cracked = True
+                    user.finished_at = finished_at
                     user.time_taken = time_taken
-
-    return time_of_cracking_start
 
 
 def parse_hashcat(user_hashes, cracked_passwords, logfile):
