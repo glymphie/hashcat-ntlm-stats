@@ -6,6 +6,11 @@
 
 This project is under construction.
 
+A small Python tool for analyzing and generating
+statistics from password hashes cracked with Hashcat. The project focuses on
+identifying patterns and characteristics in NTLM password data, such as
+password length, complexity, and common structures.
+
 You have 3 files:
 
 - The file with all the users and their hashes
