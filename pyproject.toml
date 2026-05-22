@@ -23,6 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "rich>=15.0.0",
+    "zxcvbn>=4.5.0",
 ]
 
 [dependency-groups]

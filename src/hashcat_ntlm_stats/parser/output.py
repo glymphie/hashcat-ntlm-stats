@@ -31,6 +31,7 @@ def print_text(list_of_cracked_users: list[CrackedUser]):
     cracked_user_table.add_column("Start Date")
     cracked_user_table.add_column("Finished At")
     cracked_user_table.add_column("Time Taken (s)", justify="right")
+    cracked_user_table.add_column("Password Patterns")
 
     for user in list_of_cracked_users:
         cracked_user_table.add_row(*user.to_print_row())
@@ -49,6 +50,7 @@ def print_json(list_of_cracked_users: list[CrackedUser]):
 
 def write_output(list_of_cracked_users: list[CrackedUser], output_format: str):
     """Handle which method to call depending on the output format."""
+
     writers = {
         "text": print_text,
         "csv": print_csv,

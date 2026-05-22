@@ -6,14 +6,15 @@ from datetime import datetime, timedelta
 class CrackedUser:
     """A cracked user."""
 
-    domain: str | None = None
-    username: str | None = None
-    cracked: bool | None = False
-    cracked_password: str | None = None
-    ntlm_hash: str | None = None
-    start_date: datetime | None = None
-    finished_at: datetime | None = None
-    time_taken_seconds: timedelta | None = None
+    domain: str = None
+    username: str = None
+    cracked: bool = False
+    cracked_password: str = None
+    ntlm_hash: str = None
+    start_date: datetime = None
+    finished_at: datetime = None
+    time_taken_seconds: timedelta = None
+    password_patterns: set[str] = None
 
     def __repr__(self):
         """Print a better representation of the class."""
