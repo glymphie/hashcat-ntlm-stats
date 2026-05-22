@@ -66,6 +66,7 @@ def parse_cracked_passwords(cracked_passwords, list_of_users):
 
 
 def get_set_time(time_regex, logfile, list_of_users):
+    """Get the time when cracking finished and the total time taken."""
     for line in logfile:
         match_time = time_regex.match(line)
 

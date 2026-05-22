@@ -9,6 +9,7 @@ from .models import CrackedUser
 
 
 def print_csv(list_of_cracked_users: list[CrackedUser]):
+    """Print CSV output."""
     fieldnames = [field.name for field in fields(CrackedUser)]
 
     writer = csv.DictWriter(sys.stdout, fieldnames=fieldnames)
@@ -19,6 +20,7 @@ def print_csv(list_of_cracked_users: list[CrackedUser]):
 
 
 def print_text(list_of_cracked_users: list[CrackedUser]):
+    """Print Text output."""
     cracked_user_table = Table(title="Cracked Users")
 
     cracked_user_table.add_column("Domain")
@@ -37,6 +39,7 @@ def print_text(list_of_cracked_users: list[CrackedUser]):
 
 
 def print_json(list_of_cracked_users: list[CrackedUser]):
+    """Print JSON output."""
     json.dump(
         [user.to_json_dict() for user in list_of_cracked_users],
         sys.stdout,
@@ -45,7 +48,7 @@ def print_json(list_of_cracked_users: list[CrackedUser]):
 
 
 def write_output(list_of_cracked_users: list[CrackedUser], output_format: str):
-
+    """Handle which method to call depending on the output format."""
     writers = {
         "text": print_text,
         "csv": print_csv,
