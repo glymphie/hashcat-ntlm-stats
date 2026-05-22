@@ -103,15 +103,15 @@ def parse_logfile(logfile, list_of_users):
                 if password_hash == user.ntlm_hash:
                     user.cracked = True
                     user.finished_at = finished_at
-                    user.time_taken = time_taken
+                    user.time_taken_seconds = int(time_taken.total_seconds())
 
 
 def parse_hashcat(user_hashes, cracked_passwords, logfile):
     """Parse the hashcat files."""
-    list_of_users = []
+    list_of_cracked_users: list[CrackedUser] = []
 
-    parse_user_hashes(load_file(user_hashes), list_of_users)
-    parse_cracked_passwords(load_file(cracked_passwords), list_of_users)
-    parse_logfile(load_file(logfile), list_of_users)
+    parse_user_hashes(load_file(user_hashes), list_of_cracked_users)
+    parse_cracked_passwords(load_file(cracked_passwords), list_of_cracked_users)
+    parse_logfile(load_file(logfile), list_of_cracked_users)
 
-    return list_of_users
+    return list_of_cracked_users
