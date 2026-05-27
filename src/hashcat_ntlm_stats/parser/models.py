@@ -14,11 +14,12 @@ class CrackedUser:
     start_date: datetime = None
     finished_at: datetime = None
     time_taken_seconds: timedelta = None
+    password_length: int = None
     password_patterns: set[str] = None
 
     def __repr__(self):
         """Print a better representation of the class."""
-        return f"{self.domain},{self.username},{self.cracked},{self.cracked_password},{self.ntlm_hash},{self.start_date},{self.finished_at},{self.time_taken_seconds}"
+        return f"{self.domain},{self.username},{self.cracked},{self.cracked_password},{self.ntlm_hash},{self.start_date},{self.finished_at},{self.time_taken_seconds},{self.password_length},{self.password_patterns}"
 
     def to_print_row(self):
         """Return string values of attributes of the class."""

@@ -31,6 +31,7 @@ def print_text(list_of_cracked_users: list[CrackedUser]):
     cracked_user_table.add_column("Start Date")
     cracked_user_table.add_column("Finished At")
     cracked_user_table.add_column("Time Taken (s)", justify="right")
+    cracked_user_table.add_column("Password Length")
     cracked_user_table.add_column("Password Patterns")
 
     for user in list_of_cracked_users:

@@ -63,6 +63,7 @@ def parse_cracked_passwords(cracked_passwords, list_of_users):
         for user in list_of_users:
             if user.ntlm_hash == password_hash:
                 user.cracked_password = cracked_password
+                user.password_length = len(cracked_password)
 
 
 def get_set_time(time_regex, logfile, list_of_users):
