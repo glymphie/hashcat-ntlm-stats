@@ -29,7 +29,7 @@ Take note of these:
 
 Copy the NTDS.dit to a different location:
 ```cmd
-copy {SHADOW COPY VOLUME NAME}\Windows\NTDS\NTDS.dit C:\path\of\your\choice\ntds.dit
+copy {SHADOW COPY VOLUME NAME}\Windows\NTDS\NTDS.dit C:\path\of\your\choice\NTDS.dit
 ```
 
 Copy the SYSTEM hive file to a different location:
