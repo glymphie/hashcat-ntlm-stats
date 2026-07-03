@@ -100,6 +100,8 @@ Candidate.Engine.: Device Generator
 Candidates.#1....: Ciger2236632217 -> aibacrew1
 Hardware.Mon.#1..: Temp: 52c Util:100% Core: 875MHz Mem:2505MHz Bus:16
 
+8c02787eeafb0e4c7c7a180b36896a0a:QWERTY123!
+
 [s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit =>
 
 Session..........: hashcat
