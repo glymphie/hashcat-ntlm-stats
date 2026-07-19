@@ -1,0 +1,68 @@
+name: pages
+
+on:
+  workflow_run:
+    workflows:
+      - "tests"
+    types:
+      - completed
+    branches:
+      - "main"
+
+jobs:
+  pages:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download code coverage report
+        uses: actions/download-artifact@v6
+        with:
+          name: code-coverage-report-3.14
+          path: site
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Download code coverage badge
+        uses: actions/download-artifact@v6
+        with:
+          name: coverage-badge-3.14
+          path: badge
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Prepare Pages site
+        shell: bash
+        run: >
+          mv badge/badge.svg site/badge.svg
+
+          cat > site/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <title>Code coverage</title>
+            </head>
+            <body>
+              <h1>Code coverage</h1>
+
+              <p>
+                <img src="./badge.svg" alt="Code coverage badge">
+              </p>
+
+              <p>
+                <a href="./htmlcov/">Open the full coverage report</a>
+              </p>
+            </body>
+          </html>
+          HTML
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

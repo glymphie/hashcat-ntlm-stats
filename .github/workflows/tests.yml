@@ -68,5 +68,5 @@ jobs:
       - name: Archive code coverage badge
         uses: actions/upload-artifact@v6
         with:
-          name: coverage-badge-${{ matrix.python-version }}.svg
+          name: coverage-badge-${{ matrix.python-version }}
           path: badge.svg
