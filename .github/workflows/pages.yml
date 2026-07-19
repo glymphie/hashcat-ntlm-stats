@@ -34,34 +34,15 @@ jobs:
       - name: Prepare Pages site
         shell: bash
         run: >
-          mv badge/badge.svg site/badge.svg
-
-          cat > site/index.html <<'HTML'
-          <!doctype html>
-          <html lang="en">
-            <head>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1">
-              <title>Code coverage</title>
-            </head>
-            <body>
-              <h1>Code coverage</h1>
-
-              <p>
-                <img src="./badge.svg" alt="Code coverage badge">
-              </p>
-
-              <p>
-                <a href="./htmlcov/">Open the full coverage report</a>
-              </p>
-            </body>
-          </html>
-          HTML
+          mv badge/badge.svg pages/badge.svg
+          cp -r coverage/html pages/htmlcov
+          cp coverage/coverage.md pages/
+          cp coverage/coverage.xml pages/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: site
+          path: pages
 
       - name: Deploy to GitHub Pages
         id: deployment
