@@ -15,8 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
       - name: Download code coverage report
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: code-coverage-report-3.14
           path: pages
@@ -24,22 +27,18 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
 
       - name: Download code coverage badge
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: coverage-badge-3.14
           path: pages
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
 
-      - name: List everything
-        shell: bash
-        run: pwd; ls -al *; ls -al ..;
-
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: pages
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
