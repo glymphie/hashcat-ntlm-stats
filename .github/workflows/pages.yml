@@ -19,7 +19,6 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           name: code-coverage-report-3.14
-          path: site
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
 
@@ -27,17 +26,24 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           name: coverage-badge-3.14
-          path: badge
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
 
-      - name: Prepare Pages site
+      - name: List everything
         shell: bash
-        run: >
-          mv badge/badge.svg pages/badge.svg;
-          cp -r coverage/html pages/htmlcov;
-          cp coverage/coverage.md pages/;
-          cp coverage/coverage.xml pages/;
+        run: ls -al *
+
+      - name: Extract code coverage badge
+        uses: ihiroky/extract-action@v1
+        with:
+          file_path: code-coverage-report-3.14
+          extract_dir: pages/
+
+      - name: Extract code coverage report
+        uses: ihiroky/extract-action@v1
+        with:
+          file_path: coverage-badge-3.14
+          extract_dir: pages/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
