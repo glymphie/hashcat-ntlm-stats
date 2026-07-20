@@ -34,10 +34,10 @@ jobs:
       - name: Prepare Pages site
         shell: bash
         run: >
-          mv badge/badge.svg pages/badge.svg
-          cp -r coverage/html pages/htmlcov
-          cp coverage/coverage.md pages/
-          cp coverage/coverage.xml pages/
+          mv badge/badge.svg pages/badge.svg;
+          cp -r coverage/html pages/htmlcov;
+          cp coverage/coverage.md pages/;
+          cp coverage/coverage.xml pages/;
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
